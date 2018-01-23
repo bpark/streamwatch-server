@@ -42,6 +42,24 @@
                                     <version>${jetty.version}</version>
                                     <destFileName>jetty-runner.jar</destFileName>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>javax.websocket</groupId>
+                                    <artifactId>javax.websocket-api</artifactId>
+                                    <version>${javax.websocket.api.version}</version>
+                                    <destFileName>websocket-api.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.eclipse.jetty.websocket</groupId>
+                                    <artifactId>javax-websocket-server-impl</artifactId>
+                                    <version>${jetty.version}</version>
+                                    <destFileName>websocket-server.jar</destFileName>
+                                </artifactItem>
+                                <dependency>
+                                    <groupId>org.eclipse.jetty.websocket</groupId>
+                                    <artifactId>javax-websocket-client-impl</artifactId>
+                                    <version>${jetty.version}</version>
+                                    <destFileName>websocket-client.jar</destFileName>
+                                </dependency>
                             </artifactItems>
                         </configuration>
                     </execution>
@@ -61,6 +79,12 @@
         <dependency>
             <groupId>org.eclipse.jetty.websocket</groupId>
             <artifactId>javax-websocket-server-impl</artifactId>
+            <version>${jetty.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>javax-websocket-client-impl</artifactId>
             <version>${jetty.version}</version>
             <scope>provided</scope>
         </dependency>

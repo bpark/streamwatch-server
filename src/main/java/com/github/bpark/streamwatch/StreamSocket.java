@@ -23,6 +23,7 @@ public class StreamSocket {
 
     @OnOpen
     public void onWebSocketConnect(Session session) {
+        System.out.println("connection received");
     }
 
     @OnMessage

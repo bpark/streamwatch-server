@@ -13,7 +13,7 @@ public class ConfigServlet extends HttpServlet {
 
     private static final String CONFIG_TEMPLATE = "{\n" +
             "  \"streamingUrl\": \"%s://%s:%s/streams\",\n" +
-            "  \"connectMethod\": \"SockJS\"\n" +
+            "  \"connectMethod\": \"WS\"\n" +
             "}";
 
     @Override
