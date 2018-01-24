@@ -24,7 +24,7 @@ public class ConfigServlet extends HttpServlet {
         String contextPath = request.getContextPath();   // /mywebapp
         int port = request.getServerPort();
 
-        String config = String.format(CONFIG_TEMPLATE, scheme, serverName, port);
+        String config = String.format(CONFIG_TEMPLATE, "ws", serverName, port);
 
         response.addHeader("Content-Type", "application/json");
         response.getWriter().println(config);
