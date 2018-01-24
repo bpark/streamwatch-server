@@ -17,23 +17,28 @@ package com.github.bpark.streamwatch;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 
-@ServerEndpoint(value = "/streams/")
+@ServerEndpoint(value = "/streams")
 public class StreamSocket {
 
     @OnOpen
-    public void onWebSocketConnect(Session session) {
+    public void onOpen(Session session) {
+        System.out.println("WebSocket opened: " + session.getId());
     }
 
     @OnMessage
-    public void onWebSocketText(String message) {
+    public void onMessage(String message, Session session) throws IOException {
+        System.out.println("Message received: " + message);
+        session.getBasicRemote().sendText(message.toUpperCase());
     }
 
     @OnClose
-    public void onWebSocketClose(CloseReason reason) {
+    public void onClose(CloseReason reason, Session session) {
+        System.out.println("Closing a WebSocket due to " + reason.getReasonPhrase());
     }
 
     @OnError
-    public void onWebSocketError(Throwable error) {
+    public void onError(Throwable error) {
     }
 }
