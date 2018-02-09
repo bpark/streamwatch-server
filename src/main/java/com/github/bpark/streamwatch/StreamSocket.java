@@ -19,11 +19,14 @@ import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 
-@ServerEndpoint(value = "/streams")
+
+@ServerEndpoint(value = "/streams", configurator = ServletAwareConfig.class)
 public class StreamSocket {
 
+
     @OnOpen
-    public void onOpen(Session session) {
+    public void onOpen(Session session, EndpointConfig config) {
+
         System.out.println("WebSocket opened: " + session.getId());
     }
 
