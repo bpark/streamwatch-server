@@ -15,6 +15,7 @@
  */
 package com.github.bpark.streamwatch;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +31,13 @@ public class ConfigServlet extends HttpServlet {
             "  \"streamingUrl\": \"%s://%s:%s/streams\",\n" +
             "  \"connectMethod\": \"WS\"\n" +
             "}";
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+
+        MessageProducerRegistry.send();
+    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

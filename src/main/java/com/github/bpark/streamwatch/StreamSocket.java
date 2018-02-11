@@ -26,19 +26,17 @@ public class StreamSocket {
 
     @OnOpen
     public void onOpen(Session session, EndpointConfig config) {
-
-        System.out.println("WebSocket opened: " + session.getId());
+        MessageProducerRegistry.addSession(session);
     }
 
     @OnMessage
     public void onMessage(String message, Session session) throws IOException {
-        System.out.println("Message received: " + message);
         session.getBasicRemote().sendText(message.toUpperCase());
     }
 
     @OnClose
     public void onClose(CloseReason reason, Session session) {
-        System.out.println("Closing a WebSocket due to " + reason.getReasonPhrase());
+        MessageProducerRegistry.removeSession(session);
     }
 
     @OnError

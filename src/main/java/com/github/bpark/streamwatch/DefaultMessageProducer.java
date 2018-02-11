@@ -11,4 +11,8 @@ public class DefaultMessageProducer implements MessageProducer {
     public void addMessage(String message) {
         messageQueue.offer(message);
     }
+
+    public String next() {
+        return messageQueue.poll();
+    }
 }
